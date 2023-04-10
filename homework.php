@@ -55,29 +55,30 @@ i  fi  fi+1 / fi
 5 5 1.6
 6 8 -->
 
-  <form method="GET" action="homework.php">
-    정수를 입력하세요 : <input type="text" name="k"><br>
+  <form method="POST" action="homework.php">
+    정수를 입력하세요 : <input type="text" name="n"><br>
     <input type="submit" value="전송">
   </form>
 
   <?php
 
-  if (isset($_GET['k'])) {
-    $n = $_GET['k'];
+  if (isset($_POST['n'])) {
+    $n = $_POST['n'];
     $fibonacci = array(0, 1);
+    $ratio = array();
    
     for ($i = 2; $i <= $n; $i++) {
       $fibonacci[$i] = $fibonacci[$i - 1] + $fibonacci[$i - 2];
     }
-    echo "<p>"
+    echo "<p>";
       for($i = 0; $i < $n; $i++){
-        echo $fibonacci[$i]." ";
+        echo $fibonacci[$i] . " ";
       }
     echo "</p>";
-      if ($n >2 ){
-    $ratio = $fibonacci[$n] / $fibonacci[$n - 1];
-      echo ($n - 1) . " 항과" . $n . "항의 비례는 " . $ratio . "입니다.". "<br>";
-    }
+      for($z = 2; $z < $n; $z++) {
+        $ratio[$z-2] = $fibonacci[$z] / $fibonacci[$z-1];
+        echo $ratio[$z-2] . " ";
+      }
   }
   ?>
 
