@@ -64,13 +64,19 @@ i  fi  fi+1 / fi
 
   if (isset($_GET['k'])) {
     $n = $_GET['k'];
-    $fibonacci = array(1, 1);
-    echo "1 1 1<br>";
-    echo "2 1 2<br>";
-    for ($i = 2; $i < $n; $i++) {
+    $fibonacci = array(0, 1);
+   
+    for ($i = 2; $i <= $n; $i++) {
       $fibonacci[$i] = $fibonacci[$i - 1] + $fibonacci[$i - 2];
-      $ratio = $fibonacci[$i - 2] / $fibonacci[$i - 1];
-      echo ($i + 1) . " " . $fibonacci[$i] . " " . $ratio . "<br>";
+    }
+    echo "<p>"
+      for($i = 0; $i < $n; $i++){
+        echo $fibonacci[$i]." ";
+      }
+    echo "</p>";
+      if ($n >2 ){
+    $ratio = $fibonacci[$n] / $fibonacci[$n - 1];
+      echo ($n - 1) . " 항과" . $n . "항의 비례는 " . $ratio . "입니다.". "<br>";
     }
   }
   ?>
